@@ -3,4 +3,11 @@
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
 
+function almacenar() {
+    var email = document.getElementById("email");
+    localStorage.setItem ("email", email.value);
+    var password = document.getElementById("password");
+    localStorage.setItem ("password", password.value);
+}
+almacenar();
 });
