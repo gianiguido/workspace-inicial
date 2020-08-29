@@ -43,11 +43,12 @@ input{
 
 .btn {
     display: block;
-    width: 98%;
+    width: 99%;
     background-color: crimson;
     height: 50px;
     margin: auto;
     color: #f5f5f5;
+    margin-top: 10px;
    
 }
 
@@ -63,29 +64,30 @@ input{
       
     margin-top: 3rem !important;
 }
-    
 
   </style>
+  <script src="js/sesion.js"></script>
 </head>
 
-<body class="text-center">
+<body  class="text-center">
   <div class="container p-5">
-   <img src="img/login.png" width="200" height="100">
-    <form class="signin" action="inicio.html">
-      <label for="mail" ></label>
+   <img src="img/login.png" width="280" height="120">
+    <form class="signin" id="formulario" name="formulario"  onsubmit="return validate();">
+      <label for="email" ></label>
       <input type="email" name="email" id="email" required="" placeholder="Email Address">
       <label for="password"></label>
       <input type="password" name="password" id="password" required="" placeholder="password">
-     
-     <div class="check"><input type="checkbox" value="remember">Remember me</div>
-
-      <button class="btn" type="submit">Sign in</button>
+    
+      <button class="btn" type="submit">Iniciar Sesión</button>
 
     </form>
+    
     <p class="footer">© 2017-2019</p>
   </div>
 
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
+  
+
 </body>
 </html>
