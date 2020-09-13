@@ -140,3 +140,18 @@ a.custom-card:hover {
   color: orange;
 }
 
+#inputComment{
+  width: 50%;
+  height: 70px;
+margin-top: 50px;
+
+}
+
+.boton {
+  display: block;
+  width: 50%;
+  background-color: crimson;
+  height: 50px;
+  margin-top: 20px;
+ 
+}
