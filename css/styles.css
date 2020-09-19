@@ -155,3 +155,13 @@ margin-top: 50px;
   margin-top: 20px;
  
 }
+#dropdownMenuButton{
+  height: 45px;
+}
+#user{
+  padding-top: .7rem !important;
+}
+
+.pt-2, .py-2 {
+  padding-top: .8rem !important;
+}

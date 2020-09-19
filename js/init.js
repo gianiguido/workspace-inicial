@@ -45,3 +45,34 @@ var getJSONData = function(PRODUCTS_URL){
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
 });
+
+var getJSONData3 = function (url) 
+{
+	var result = {};
+	showSpinner();
+	return fetch(PRODUCTS_URL)
+    .then(response => 
+		{
+			if (response.ok) 
+			{
+				return response.json();
+			} 
+			else 
+			{
+				throw Error(response.statusText);
+			}
+		})
+		.then(function (response) 
+			{
+				result.status = 'ok';
+				result.data = response;
+				hideSpinner();
+				return result;
+			})
+			.catch(function (error) 
+				{
+					result.status = 'error';
+					result.data = error;
+					hideSpinner();
+					return result;
+				});}
