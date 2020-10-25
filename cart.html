@@ -12,21 +12,7 @@
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
+  
   </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
@@ -65,26 +51,33 @@
       <div class="row justify-content-md-center">
         <div class="col-md-8 order-md-1">
           <div class="text-center p-4"><h2>Mi carrito de compras</h2></div>
-      <table class="table">
-          <h5 for="">Articulos a comprar</h5>
-          <br>
-          <thead class="thead-light">
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Costo</th>
-              <th scope="col">Cantidad</th>
-              <th scope="col">Subtotal</th>
-            </tr>
-          </thead>
-          <tbody id="tablaCarrito">
-            
-          </tbody>
+         
+         <!-- Tabla--> 
+         
+         <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Producto</th>
+                    <th scope="col" id="name">Nombre</th>
+                    <th scope="col" id="cost">Costo</th>
+                    <th scope="col" id="count">Cantidad</th>
+                    <th scope="col" id="subtTot">Subtotal</th>                      
+                </tr>
+            </thead>
+
+           <tbody id="ContArticulos">
+                <td></td>
+                <td headers="nombre name"></td>
+                <td headers="costo cost"></td>
+                <td headers="cantidad count"></td> 
+                <td headers="subtotal subtTot"></td>  
+            </tbody>
         </table>
-        
+
+              <!-- Envío--> 
         <hr>
         <br>
-          <h5 class="mb-3">Tipo de envío</h5>
+          <h3 class="mb-3">Tipo de envío</h3>
           <div class="d-block my-3">
             <div class="custom-control custom-radio">
               <input id="premiumRadio" name="publicationType" type="radio" class="custom-control-input" checked="" required="">
@@ -105,47 +98,78 @@
           <form class="needs-validation" id="sell-info">
             <div class="row">
               <div class="col">
-                <input type="text" class="form-control" placeholder="Calle">
+                <input type="text" class="form-control" placeholder="Calle" required="">
               </div>
+
+             
+            
               <div class="col">
-                <input type="text" class="form-control" placeholder="Número">
+                <input type="text" class="form-control" placeholder="Número" required="">
               </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-md-12 mb-3">
-                  <input type="text" class="form-control" placeholder="Esquina">
+                  <input type="text" class="form-control" placeholder="Esquina" required="">
                 </div>
               </div>
 
             <hr class="mb-4">
 
-            <h4 class="mb-3">Costos</h4>
-            <ul class="list-group mb-3">
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                  <div>
-                    <h6 class="my-0">Subtotal</h6>
-                    <small class="text-muted">Unitario del producto</small>
-                  </div>
-                  <span class="text-muted" id="productCostText">-</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                  <div>
-                    <h6 class="my-0">Costo del envío</h6>
-                    <small class="text-muted">Según el tipo de envío</small>
-                  </div>
-                  <span class="text-muted" id="comissionText">-</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between">
-                  <span>Total ($)</span>
-                  <strong id="totalCostText">-</strong>
-                </li>
-              </ul>
+              <table class="table">
+                <h3>Costos</h3>
+                <tr>                  
+                    <th scope="col">Costo de envío</th>
+                    <th scope="col">Subtotal</th>
+                    <th scope="col">Total</th>
+                </tr>
+                
+                <tbody>          
+                    <td id="CostDeEnvio"></td> 
+                    <td id="subTotalDos"></td>
+                    <td id="total"></td>  
+               </tbody>
+            </table>
+
+
             <hr class="mb-4">
             <div>
-              <h5 class="mb-3">Forma de pago</h5>
-              <p>No ha seleccionado <a href="">Seleccionar</a></p>
-            </div>
+              <h5 class="mb-3">Métodos de pago</h5>
+              <p>No ha seleccionado
+                <a href="#openModal">Seleccionar</a>
+              </p>
+              
+              <!--Modal-->
+
+              <div id="openModal" class="modalDialog">
+                <div>               
+                  <p>
+                    <h3 class="metodoH2"> ¿Cómo quieres pagar?</h3>                                          
+                <p>
+                  <hr>
+                  <input type="radio" value="1" name="pago" id="tarjeta"/><b> Tarjeta de crédito</b>
+              <button class="btn" type="submit"><img class="imagen" src ="img/metodo-(1).jpg" /></button>
+                    <button class="btn" type="submit"><img class="imagen" src ="img/OCA.jpg" /></button>
+                    <button class="btn" type="submit"><img class="imagen" src ="img/metodo-(3).jpg" /></button>
+                  </p>
+                  <hr>
+                  <p>
+                    <input type="radio" value="1" name="pago" id="tarjeta"/><b> Paypal</b>
+                <button class="btn" type="submit"><img class="imagen" src ="img/metodo-(2).jpg" /></button>                      
+                    </p>                            
+                <hr>
+                <p>
+                  <input type="radio" value="1" name="pago" id="tarjeta"/><b> Transferencia bancaria</b>
+              <button class="btn" type="submit"><img class="imagen" src ="img/índice.png" /></button>
+              <button class="btn" type="submit"><img class="imagen" src ="img/Logo-BBVA.jpg" /></button>
+              <button class="btn" type="submit"><img class="imagen" src ="img/Banco-Republica.png" /></button>                              
+                  </p>          
+             <hr>
+                <br>                                
+                  <a href="#close" title="Close" class="btn btn-primary btn-lg">Confirmar</a>
+                </div>
+              </div>
+            </div>             
             <br>
             <button class="btn btn-primary btn-lg" type="submit">Finalizar compra</button>
           </form>

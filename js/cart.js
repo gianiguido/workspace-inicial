@@ -1,55 +1,92 @@
-var cartInfo = [];
-var cartArticles = [];
-var shippingPercentage = 0.15;
-let DOLLAR_SYMBOL = "USD ";
-let PESO_SYMBOL = "UYU ";
+var cartArray = [];
+var Porcentaje = 0.15;
+var costoDeEnvio = 15;
+var DOLLAR_SYMBOL = "USD ";
+var PESO_SYMBOL = "UYU ";
 
+function MostrarProductos(){
 
-document.addEventListener("DOMContentLoaded", function(e){
+    let htmlContentToAppend = "";
+    for (var i = 0; i < cartArray.length; i++){ 
+        var article = cartArray[i];
+        var subTotal = article.unitCost;
+        document.getElementById("subTotalDos").innerHTML = subTotal + ` ` + article.currency;
+        document.getElementById("CostDeEnvio").innerHTML = (subTotal * Porcentaje)+ ` ` + article.currency;
+        document.getElementById("total").innerHTML = (subTotal+ costoDeEnvio) + ` ` + article.currency;
 
-    getJSONData(CART_URL).then(function(resultObj) {
-        let htmlContentToAppend = "";
-        if (resultObj.status === "ok") {
-            cartInfo = resultObj.data;
-            cartArticles = cartInfo.articles;
-            for (var i = 0; i < cartInfo.articles.length; i++) {
-                htmlContentToAppend += `
-                <tr>
-                    <th scope="row"><img src="`+ cartArticles[i].src +`" alt="" width="120px"></th>
-                    <td>`+ cartArticles[i].name +`</td>
-                    <td>`+ cartArticles[i].currency + ` `  + cartArticles[i].unitCost +`</td>
-                    <td><input class="form-control" style="width: 150px;" type="number" id="contadorProd">`+ cartArticles[i].count +`</td>
-                    <td class="font-weight-bold" id="productSubtotal">UYU 100</td>
-                </tr>`
-              document.getElementById("tablaCarrito").innerHTML = htmlContentToAppend;
-            }
-        } 
-    });
+        htmlContentToAppend += `
+            <div class="d-flex w-100 justify-content-between">
+                <td><img width="130px" height="130px" src="` + article.src + `" alt=""></td>
+                <td>` + article.name +`</td>
+                <td>` + article.unitCost + ` ` + article.currency + `</td>
+                <td><input type="number" style="width: 130px" min="1" value="1" id="cantArt" class="form-control"></td>  
+                <td id="subTotal">` + subTotal + ` ` + article.currency +`</td>
+            </div>
+        `
 
- 
-      
+        document.getElementById("ContArticulos").innerHTML=htmlContentToAppend;
+
+        document.getElementById("cantArt").addEventListener("change", function(){
+            let cantUser = document.getElementById("cantArt").value;
+            subTotal = cantUser * article.unitCost;
+            document.getElementById("subTotal").innerHTML = subTotal + ` ` + article.currency;
+            document.getElementById("subTotalDos").innerHTML = subTotal + ` ` + article.currency;
+            envio();
+            costoTotal();
+        });
+
+        /*Calculo de envio*/
+        function envio() {
+            costoDeEnvio = subTotal * Porcentaje;
+            document.getElementById("costDeEnvio").innerHTML = parseInt(costoDeEnvio) + ` ` + article.currency;
+        }
+
+        function costoTotal(){ 
+            document.getElementById("total").innerHTML = subTotal + costoDeEnvio + ` ` + article.currency;
+        }
+    }
+}
+
+/*Cálculo de porcentajes de envíos*/
+document.getElementById("premiumRadio").addEventListener("change", function(){
+    Porcentaje = 0.15;
+    envio();
+    costoTotal();
+});
     
-    document.getElementById("contadorProd").addEventListener("change",function(){
-        var contadorArt = document.getElementById("contadorProd").value;
-        var resultado = contadorArt * unitCost;
-    });
-
-    document.getElementById("premiumRadio").addEventListener("change", function(){
-        shippingPercentage = 0.15;
-        costoTotal();
-    });
-    
-    document.getElementById("expressRadio").addEventListener("change", function(){
-        shippingPercentage = 0.07;
-        costoTotal();
-    });
-
-    document.getElementById("standardRadio").addEventListener("change", function(){
-        shippingPercentage = 0.05;
-        costoTotal();
-    });
+document.getElementById("expressRadio").addEventListener("change", function(){
+    Porcentaje = 0.07;
+    envio();
+    costoTotal();
 });
 
+document.getElementById("standardRadio").addEventListener("change", function(){
+    Porcentaje = 0.05;
+    envio();
+    costoTotal();
+});
+
+
+
+
+
+
+
+//Función que se ejecuta una vez que se haya lanzado el evento de
+//que el documento se encuentra cargado, es decir, se encuentran todos los
+//elementos HTML presentes.
+
+document.addEventListener("DOMContentLoaded", function(e){
+    getJSONData(CART_INFO_URL).then(function(resultObj){
+        if (resultObj.status == "ok")
+        {   
+            cartObj = resultObj.data;
+            cartArray = cartObj.articles;
+            
+            MostrarProductos();
+        }
+    })
+})
 
    
     

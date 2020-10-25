@@ -144,8 +144,14 @@ a.custom-card:hover {
   width: 50%;
   height: 70px;
 margin-top: 50px;
-
 }
+#input {
+  border: 2px rgb(141, 140, 140);
+  border-radius: 5px;
+  background: white;
+}
+
+
 
 .boton {
   display: block;
@@ -165,4 +171,97 @@ margin-top: 50px;
 .pt-2, .py-2 {
   padding-top: .8rem !important;
 }
+
+.imagen {
+  width: 95px;
+  height: 70px;
+}
+.money {
+  width: 50px;
+  top: 10px;
+  height: 50px;
+}
+
+#tarjeta {
+width: 60px;
+cursor: pointer;
+}
+
+.metodoH2{
+  text-align: center;
+  font-size: 30px;
+  
+}
+.check input {
+  width: 50px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: slategray;
+  color: #ffffff;
+}
+.btn {
+  border: slategrey;
+  border-radius: 10px;
+  
+}
+
+.btn-primary:active {
+  background-color:#007bff;
+}
+
+.modalDialog {
+	position: fixed;
+	font-family:  'Raleway', serif !important;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+.modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+.modalDialog > div {
+  width: 670px;
+  height: 570px;
+	position: relative;
+	margin: 2% auto;
+	padding: 25px 25px 13px 20px;
+	border-radius: 10px;
+	background: #fff;
+  -webkit-transition: opacity 400ms ease-in;
+-moz-transition: opacity 400ms ease-in;
+transition: opacity 400ms ease-in;
+}
+.close {
+	background-color:#007bff;;
+	color: #FFFF;
+  line-height: 40px;
+	position: absolute;
+	right: 30px;
+  text-align: center;
+  text-shadow: none;
+	top: 500px;
+	width: 130px;
+	text-decoration: none;
+	font-weight: normal;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+  border-radius: 10px;
+
+	
+}
+.close:hover { background:#007bff;
+color: rgba(0,0,0,0.8); 
+}
+
 
